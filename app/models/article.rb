@@ -8,5 +8,5 @@ class Article < ActiveRecord::Base
     @title = title
     @content = content
   end
-  
+
 end
