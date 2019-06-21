@@ -16,8 +16,17 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/articles' do
-    binding.pry
-    Article.create(title: params[:article_title], content: params[:article_content])
+    @article = Article.create(title: params[:article_title], content: params[:article_content])
     erb :index
+  end
+
+  get '/articles' do
+    @articles = Article.all
+    erb :index
+  end
+
+  get '/articles/:id' do
+    @article = Article.find(params[:id])
+    erb :show
   end
 end
